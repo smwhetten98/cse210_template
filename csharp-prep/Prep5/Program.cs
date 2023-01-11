@@ -46,12 +46,4 @@ class Program
     {
         Console.WriteLine($"{name}, the square of your number is {number}");
     }
-
-/*
-Welcome to the program!
-Please enter your name: Brother Burton
-Please enter your favorite number: 42
-Brother Burton, the square of your number is 1764
-*/
-
 }
