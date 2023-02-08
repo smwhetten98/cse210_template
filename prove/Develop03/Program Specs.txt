@@ -1,0 +1,42 @@
+Scripture (hold scripture text and reference)
+Words (hold words, hide words)
+Output (handles all output to console)
+Program (handles program flow)
+LoadScripture (load scripture from file) (extra)
+
+
+Program:
+Methods:
+- Main (default method, static)
+- _Run (static)
+
+Scripture
+Methods:
+- PullScripture(filename: string): bool
+- GetScripture(): string
+- GetReference(): string
+Attributes:
+- _reference: string
+- _verses: string
+
+Words
+Methods:
+- SetWords(scripture: string): void
+- GetAllowedWords(): List<string>
+- HideWords(): void
+Attributes:
+- _allowedWords: List<string>
+- _pulledWords: List<string>
+
+Output
+Methods:
+- ClearScreen(): void
+- AddToBuffer(newEntry: string): void
+- PrintBuffer(): void
+- ReadConsole(): string
+Attributes:
+- _buffer: List<string>
+
+LoadScripture
+Methods:
+- GetScripture(filename: string): string[2]
