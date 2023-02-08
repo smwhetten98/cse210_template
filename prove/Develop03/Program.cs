@@ -8,9 +8,9 @@ using System;
 
 class Program
 {
-    static Output output = new Output();
-    static Words words = new Words();
-    static Scripture scripture = new Scripture();
+    private static Output output = new Output();
+    private static Words words = new Words();
+    private static Scripture scripture = new Scripture();
 
     static void Main(string[] args)
     {
@@ -36,7 +36,7 @@ class Program
         Run();
     }
 
-    static void Run()
+    private static void Run()
     {
         words.SetWords(scripture.GetScripture());
         DisplayScripture();

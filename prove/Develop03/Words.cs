@@ -22,7 +22,7 @@ public class Words
                 int pullIndex = GetRandomNumber(_allowedWords.Count());
                 string wordToPull = _allowedWords[pullIndex];
                 _pulledWords.Add(wordToPull);
-                _formattedWordsList[_formattedWordsList.IndexOf(wordToPull)] = new string('-', wordToPull.Length);
+                _formattedWordsList[_formattedWordsList.IndexOf(wordToPull)] = new string('_', wordToPull.Length);
 
                 _allowedWords.RemoveAt(pullIndex);
             }

@@ -4,7 +4,6 @@ public class Scripture
 {
     private string _reference;
     private string _verses;
-
     private LoadScripture _loadScripture = new LoadScripture();
 
 
