@@ -1,0 +1,18 @@
+c#
+cs
+using System;
+
+
+MODIFIER class NAME
+{
+}
+MODIFIER TYPE NAME(ARGUMENTS)
+{
+}
+MODIFIER TYPE NAME;
+string,bool,int,double,float
+ = new TYPE();
+Program
+class Program
+Main
+static void Main(string[] args)

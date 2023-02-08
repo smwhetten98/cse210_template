@@ -1,0 +1,18 @@
+language
+file extension
+header line 1
+header line 2
+header line 3
+class declaration
+class 2nd line
+class end line
+method declaration
+method 2nd line
+method end line
+attribute declaration
+non-initialized attribute list
+initialized attribute declaration
+special class name
+special class declaration
+special method name
+special method declaration

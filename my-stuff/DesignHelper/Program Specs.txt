@@ -1,0 +1,67 @@
+*
+Program (handles program flow)
+ClassContainer (handles specific new class created, stores and builds class file)
+ReadWriteFiles (handles reading and writing of files)
+ScriptingLanguages (stores different scripting language styles, syntax, and conventions) (extra)
+Translator (translates data from specs to scripting language)
+*
+
+_Program
+Methods:
+- Main(args: string[]): static void
+- _LoadTemplate(): static List<string>
+- _SplitClasses(programData: List<string>): static List<ClassContainer>
+- _CompileClasses(classes: List<ClassContainer>): static void
+- _LoadLanguages(): static bool
+Attributes:
+- _readWriteFiles: static ReadWriteFiles
+- _languageFilepaths: static string[]
+
+ClassContainer
+Methods:
+- GetClassName(): string
+- SetClassName(newClassName: string): void
+- AddMethod(newMethod: string): void
+- AddAttribute(newAttribute: string): void
+- CompileClass(): string[]
+- _CompileMethods: string
+- _CompileAttributes: string
+Attributes:
+- _className: string
+- _methodsList: List<string>
+- _attributesList: List<string>
+- _compiledFile: string
+- _translator: Translator
+
+ReadWriteFiles
+Methods:
+- ReadFile(filepath: string): List<string>
+- WriteFile(filepath: string, fileContents: string): bool
+
+ScriptingLanguages
+Methods:
+- GetLanguage(language: string): static Dictionary<string, List<string>>
+- CreateLanguagesDictionary(languagesData: List<List<string>>): static void
+- GetAvailableLanguages(): static List<string>
+Attributes:
+- _languages: Dictionary<string, Dictionary<string, List<string>>>;
+
+Translator
+Methods:
+- Translator(language: string)
+- GetFileExtension(): string
+- GetHeader(): string
+- GetClass(classRaw: string): string[]
+- GetMethod(methodRaw: string): string
+- GetAttribute(attributeRaw: string): string
+- _GetSyntax(language: string): Dictionary<string, List<string>>;
+Attributes:
+- _fileExtension: string
+- _languageHeader: List<string>
+- _languageClass: List<string>
+- _languageMethod: List<string>
+- _languageAttribute: List<string>
+- _specialClass: List<string>
+- _specialMethod: List<string>
+- _nonInitializedAttributes: List<string>
+- _initializedAttributesDeclaration: List<string>
