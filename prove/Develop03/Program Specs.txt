@@ -2,7 +2,7 @@ Scripture (hold scripture text and reference)
 Words (hold words, hide words)
 Output (handles all output to console)
 Program (handles program flow)
-LoadScripture (load scripture from file) (extra)
+LoadScripture (load scripture from file, extra)
 
 
 Program:

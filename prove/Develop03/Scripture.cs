@@ -27,5 +27,4 @@ public class Scripture
         }
         return false;
     }
-
 }
