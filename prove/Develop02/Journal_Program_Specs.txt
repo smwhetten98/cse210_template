@@ -1,0 +1,61 @@
+*
+Program (handles program flow)
+Journal (handles loading/updating journal)
+Entry (stores prompt, response, and date/time)
+Prompts (stores list of prompts)
+SaveLoad (handles saving to and loading from files)
+Menu (main application interface)
+*
+
+Program
+Methods:
+- Main(args: string[]): static void
+
+Journal
+Methods:
+- NewEntry(): void
+- SaveEntries(): bool
+- LoadEntries(): bool
+- DisplayEntries(): void
+- _GetEntries(): List<Entry>
+- _GetEntriesData(): List<string>
+- _StoreEntries(): void
+- _GetPrompt(): string
+- _GetResponse(): string
+- _AddEntry(newEntry: Entry): bool
+Attributes:
+- _entries: List<Entry>
+- _journalFilepath: string
+
+Entry
+Methods:
+- Entry(date: string, prompt: string, response: string): 
+Attributes:
+- _date: string
+- _prompt: string
+- _response: string
+
+Prompts
+Methods:
+- LoadPrompts(): bool
+- GetPrompt(): string
+Attributes:
+- _prompts: List<string>
+
+SaveLoad
+Methods:
+- SaveToFile(filename: string, fileContents: List<string>): static bool
+- LoadFromFile(filename: string): static List<string>
+
+Menu
+Methods:
+- Menu(): 
+- Run(): void
+- _DisplayMenu(): void
+- _GetMenuAction(): string
+- _PerformMenuAction(menuAction: int): void
+- _EvaluateMenuAction(userChoice: string): int
+- _AlertInvalidMenuAction(): void
+Attributes:
+- _menuActions: string[]
+- _journal: Journal

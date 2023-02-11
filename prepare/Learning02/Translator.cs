@@ -51,7 +51,52 @@ public class Translator
 
     public string GetMethod(string methodRaw)
     {
-        string[] methodParts = methodRaw.Replace("- ", "").Split("): ");
+        Dictionary<string, string> methodParts = new Dictionary<string, string>();
+
+        string[] separate = methodRaw.Replace("- ", "").Split("): ");
+
+        methodParts["type"] = separate[1] == "" ? "" : separate[1] + " ";
+        separate = separate[0].Split("(");
+
+        if (separate[0] == _specialMethod[0])
+        {
+            return $"\t{_specialMethod[1]}\n\t{_languageMethod[1]}\n\n\t{_languageMethod[2]}\n";
+        }
+        else
+        {
+            methodParts["name"] = separate[0];
+
+            methodParts["modifier"] = methodParts["name"].Substring(0, 1) == "_" ? "private" : "public";
+
+            if (separate.Count() > 1)
+            {
+                string argsString = "";
+                if (separate[1].Contains(","))
+                {
+                    List<string> args = new List<string>(separate[1].Split(", "));
+                    for (int i = 0; i < args.Count(); i++)
+                    {
+                        args[i] = string.Join(" ", args[i].Split(": ").Reverse());
+                        argsString += i == args.Count() - 1 ? args[i] : args[i] + ", ";
+                    }
+                }
+                else
+                {
+                    argsString = string.Join(" ", separate[1].Split(": ").Reverse());
+                }
+                methodParts["args"] = argsString;
+            }
+            else
+            {
+                methodParts["args"] = "";
+            }
+
+            string newArrangement = $"\t{_languageMethod[0]}\n\t{_languageMethod[1]}\n\n\t{_languageMethod[2]}\n";
+            return newArrangement.Replace("NAME", methodParts["name"]).Replace("ARGUMENTS", methodParts["args"]).Replace("MODIFIER", methodParts["modifier"]).Replace("TYPE ", methodParts["type"]);
+        }
+
+
+/*        string[] methodParts = methodRaw.Replace("- ", "").Split("): ");
         string[] argSeparate = methodParts[0].Split("(");
 
         if (argSeparate[0] == _specialMethod[0])
@@ -60,6 +105,10 @@ public class Translator
         }
         else
         {
+            string[] args = new string[];
+            if (argSeparate[1].Contains(",")) {
+                args = argSeparate[1].Split(",");
+            }
             string[] argSplit = argSeparate[1].Contains(":") ? argSeparate[1].Split(": ") : new string[] {"", ""};
 
             methodParts[1] = methodParts[0].Substring(0, 1) == "_" ? "private " + methodParts[1] : "public " + methodParts[1];
@@ -67,7 +116,7 @@ public class Translator
 
             string newArrangement = $"\t{_languageMethod[0]}\n\t{_languageMethod[1]}\n\n\t{_languageMethod[2]}\n";
             return newArrangement.Replace("NAME(ARGUMENTS)", $"{parts[0]}({parts[2]} {parts[1]})").Replace("MODIFIER TYPE", parts[3]).Replace("( )", "()");
-        }
+        }*/
     }
 
     public string GetAttribute(string attributeRaw)
