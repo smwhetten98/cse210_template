@@ -1,0 +1,19 @@
+Assignment
+Methods:
+- GetSummary(): string
+Attributes:
+- _studentName: string
+- _topic: string
+
+MathAssignment
+Methods:
+- GetHomeworkList(): string
+Attributes:
+- _textbookSection: string
+- _problems: string
+
+WritingAssignment
+Methods:
+- GetWritingInformation(): string
+Attributes:
+- _title: string
