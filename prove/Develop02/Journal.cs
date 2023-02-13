@@ -4,7 +4,7 @@ public class Journal
 {
 	private List<Entry> _entries = new List<Entry>();
 	private Prompts prompts = new Prompts();
-	private string _journalFilepath = "journal.txt";
+	private string _journalFilepath = "journal.csv";
 
 	public void NewEntry()
 	{
@@ -23,6 +23,7 @@ public class Journal
 	private List<string> _buildCSVLines()
 	{
 		List<string> csvLines = new List<string>();
+		csvLines.Add("Date and Time,Prompt,Response");
 		foreach(Entry entry in _entries)
 		{
 			csvLines.Add(_formatCSVEntryData(entry));
@@ -43,6 +44,7 @@ public class Journal
 	public void LoadEntries()
 	{
 		List<string> entriesData = _GetEntriesData();
+		entriesData.RemoveAt(0);
 		List<Entry> loadedEntries = _BuildEntries(entriesData);
 		if (loadedEntries.Count() > 0)
 		{
