@@ -4,6 +4,7 @@ class Program
 {
     private static string[] _languageFilepaths = new string[] {"c#.txt"};
     private static ReadWriteFiles _readWriteFiles = new ReadWriteFiles();
+    private static string templateFilepath = "";
     static void Main(string[] args)
     {
         if (!LoadLanguages()) {
@@ -28,7 +29,7 @@ class Program
         do
         {
             Console.Write("Please enter your program template's filepath:\n>");
-            string templateFilepath = Console.ReadLine();
+            templateFilepath = Console.ReadLine();
             if (templateFilepath == "" || templateFilepath.ToLower() == "exit") {
                 break;
             }
@@ -79,8 +80,7 @@ class Program
                         {
                             classes.Add(currentClassContainer);
                         }
-                        currentClassContainer = new ClassContainer();
-                        currentClassContainer.SetClassName(line.Replace(" ", ""));
+                        currentClassContainer = new ClassContainer(line.Replace(" ", ""));
                     }
                 }
             }
@@ -131,9 +131,10 @@ class Program
                 }
                 while (!availableLanguages.Contains(language));
             }
-            string className = classContainer.GetClassName();
             string[] classFileData = classContainer.CompileClass(language);
-            if (!_readWriteFiles.WriteFile("../test/" + className + "." + classFileData[0], classFileData[1]))
+            string className = classContainer.GetClassName();
+            string fileLocation = templateFilepath.Contains("/") ? templateFilepath.Substring(0, templateFilepath.LastIndexOf("/")) + "/" : "";
+            if (!_readWriteFiles.WriteFile(fileLocation + className + "." + classFileData[0], classFileData[1]))
             {
                 Console.WriteLine($"Unable to compile class \"{className}\"");
             }

@@ -1,0 +1,18 @@
+python
+py
+
+
+
+MODIFIER class NAME(PARENT)
+
+
+def NAME(ARGUMENTS):
+
+
+self.NAME
+
+
+Program
+class Program
+Main
+static void Main(string[] args)

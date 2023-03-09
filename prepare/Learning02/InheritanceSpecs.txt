@@ -1,0 +1,25 @@
+
+
+Program
+Methods:
+- Main(args: string[]): static void
+
+Assignment
+Methods:
+- GetSummary(): string
+Attributes:
+- _studentName: string
+- _topic: string
+
+MathAssignment: Assignment
+Methods:
+- GetHomeworkList(): string
+Attributes:
+- _textbookSection: string
+- _problems: string
+
+WritingAssignment: Assignment
+Methods:
+- GetWritingInformation(): string
+Attributes:
+- _title: string
