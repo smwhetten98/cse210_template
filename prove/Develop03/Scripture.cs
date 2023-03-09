@@ -17,7 +17,7 @@ public class Scripture
         return _reference;
     }
 
-    public bool PullScripture(string filename)
+    public bool LoadScripture(string filename)
     {
         string[] scriptureParts = _loadScripture.GetScripture(filename);
         if (scriptureParts.Length == 2) {
