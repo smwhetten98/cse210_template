@@ -15,21 +15,25 @@ Journal
 Methods:
 - NewEntry(): void
 - SaveEntries(): bool
-- LoadEntries(): bool
+- _BuildCSVLines: List<string>
+- _FormatCSVEntryData: string
+- LoadEntries(): void
 - DisplayEntries(): void
-- _GetEntries(): List<Entry>
+- _BuildEntries(): List<Entry>
 - _GetEntriesData(): List<string>
-- _StoreEntries(): void
+- _CreateEntry: Entry
 - _GetPrompt(): string
 - _GetResponse(): string
 - _AddEntry(newEntry: Entry): bool
 Attributes:
 - _entries: List<Entry>
 - _journalFilepath: string
+- _prompts: Prompts
 
 Entry
 Methods:
 - Entry(date: string, prompt: string, response: string): 
+- GetEntryData(): string[]
 Attributes:
 - _date: string
 - _prompt: string
@@ -37,10 +41,12 @@ Attributes:
 
 Prompts
 Methods:
+- Prompts(): 
 - LoadPrompts(): bool
 - GetPrompt(): string
 Attributes:
 - _prompts: List<string>
+- _promptsFilepath: string
 
 SaveLoad
 Methods:
@@ -50,12 +56,14 @@ Methods:
 Menu
 Methods:
 - Menu(): 
-- Run(): void
+- _Run(): void
 - _DisplayMenu(): void
 - _GetMenuAction(): string
 - _PerformMenuAction(menuAction: int): void
 - _EvaluateMenuAction(userChoice: string): int
 - _AlertInvalidMenuAction(): void
+- _CheckIntVal(userChoice: string): bool
+- _CheckStringMatchMenuOption(userChoice: string): int
 Attributes:
 - _menuActions: string[]
 - _journal: Journal

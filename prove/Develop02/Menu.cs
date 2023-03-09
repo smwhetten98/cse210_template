@@ -6,13 +6,13 @@ public class Menu
 	private string[] _menuActions = new string[] {"New Entry", "Load Journal", "Save Journal", "Display Journal", "Exit"};
 	private Journal journal = new Journal();
 
-	public Menu ()
+	public Menu()
 	{
 		journal.LoadEntries();
-		Run();
+		_Run();
 	}
 
-	public void Run()
+	private void _Run()
 	{
 		int menuActionInt;
 		string menuAction;

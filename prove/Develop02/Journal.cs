@@ -3,7 +3,7 @@ using System;
 public class Journal
 {
 	private List<Entry> _entries = new List<Entry>();
-	private Prompts prompts = new Prompts();
+	private Prompts _prompts = new Prompts();
 	private string _journalFilepath = "journal.csv";
 
 	public void NewEntry()
@@ -16,22 +16,22 @@ public class Journal
 
 	public bool SaveEntries()
 	{
-		List<string> csvData = _buildCSVLines();
+		List<string> csvData = _BuildCSVLines();
 		return SaveLoad.SaveToFile(_journalFilepath, csvData);
 	}
 
-	private List<string> _buildCSVLines()
+	private List<string> _BuildCSVLines()
 	{
 		List<string> csvLines = new List<string>();
 		csvLines.Add("Date and Time,Prompt,Response");
 		foreach(Entry entry in _entries)
 		{
-			csvLines.Add(_formatCSVEntryData(entry));
+			csvLines.Add(_FormatCSVEntryData(entry));
 		}
 		return csvLines;
 	}
 
-	private string _formatCSVEntryData(Entry entry)
+	private string _FormatCSVEntryData(Entry entry)
 	{
 		string[] entryData = entry.GetEntryData();
 		for (int i = 0; i < entryData.Count(); i++)
@@ -89,7 +89,7 @@ public class Journal
 
 	private string _GetPrompt()
 	{
-		return prompts.GetPrompt();
+		return _prompts.GetPrompt();
 	}
 
 	private string _GetResponse(string prompt)
