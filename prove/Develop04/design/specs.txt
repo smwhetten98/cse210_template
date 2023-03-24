@@ -1,14 +1,10 @@
 *
 Program (handles program start)
-
 Menu (stores and displays user options, runs chosen options)
 Messages (static, stores various messages for activities (prompts, descriptions, end messages))
 Prompts (stores and returns list of prompts)
-SaveLoad (static, handles saving to and loading from files)
 Timer (static, runs specified timer animation for specified duration)
-
 Activity (base class, stores values common to all activity types)
-
 BreathingActivity (handles breathing activity actions)
 ReflectionActivity (handles reflection activity actions)
 ListingActivity (handles listing activity actions)
