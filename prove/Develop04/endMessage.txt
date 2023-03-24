@@ -1,0 +1,1 @@
+You have completed DURATION seconds of the ACTIVITYNAME activity.

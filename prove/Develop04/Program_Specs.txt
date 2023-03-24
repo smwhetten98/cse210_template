@@ -1,0 +1,130 @@
+*
+Program (handles program start)
+
+Menu (stores and displays user options, runs chosen options)
+Messages (static, stores various messages for activities (prompts, descriptions, end messages))
+Prompts (stores and returns list of prompts)
+SaveLoad (static, handles saving to and loading from files)
+Timer (static, runs specified timer animation for specified duration)
+
+Activity (base class, stores values common to all activity types)
+
+BreathingActivity (handles breathing activity actions)
+ReflectionActivity (handles reflection activity actions)
+ListingActivity (handles listing activity actions)
+*
+
+Program
+Methods:
+- Main (args: string[]): void
+
+Menu
+Methods:
+- Menu(): 
+- _RunMenu(): void
+- _ShowWelcome(): void
+- _DisplayMenu(): void
+- _PromptForMenuOption(): string
+- _ValidateMenuOption(chosenMenuOption: string): int
+- _GetIntMenuOption(chosenMenuOption: string): int
+- _GetStringMenuOption(chosenMenuOption: string): int
+- _HandleInvalidMenuOption(chosenMenuOption: string): void
+- _RunMenuOption(menuOption: int): void
+Attributes:
+- _menuOptions: string[]
+
+static Messages
+Methods:
+- LoadAllMessages(): static bool
+- _LoadAllPrompts(): static bool
+- _LoadDescriptions(): static bool
+- _LoadEndMessage(): static bool
+- GetDescription(activityName: string): string
+- GetPrompt(promptType: string): string
+- GetEndMEssage(): string
+Attributes:
+- _prompts: static Dictionary<string, Prompts>
+- _descriptions: static Dictionary<string, string>
+- _endMessage: static string
+- _descriptionsPath: static string
+- _endMessagePath: static string
+- _promptPaths: static Dictionary<string, string>
+
+Prompts
+Methods:
+- LoadPromptsList(filepath: string): bool
+- GetPrompt(): string
+Attributes:
+- promptsList: List<string>
+
+static Repository
+Methods:
+- SaveFile(filepath: string, fileContents: string): bool
+- LoadFile(filepath: string): List<string>
+
+static Timer
+Methods:
+- RunTimer(timerName: string, timerDuration: int): static void
+- _RunCountdown(duration: double): static void
+- _RunDots(duration: double): static void
+- _RunSpinner(duration: double): static void
+Attributes:
+- _spinner: string[]
+- _dots: string
+- _countdownAdvanceDuration: static double
+- _dotsAdvanceDuration: static double
+- _spinnerAdvanceDuration: static double
+
+Activity
+Methods:
+- StartActivity(activityName: string): void
+- _DisplayWelcomeMessage(activityName: string): void
+- _GetDescription(): string
+- _DisplayDescription(startMessage: string): void
+- _PromptForDuration(): int
+- _ValidateDuration(durationString: string): int
+- _StartCountdown(duration: int): void
+- EndActivity(): void
+- _GetEndMessage(): string
+- _DisplayEndMessage(endMessage: string): void
+- GetDuration(): int
+Attributes:
+- _activityName: string
+- _activityDuration: int
+
+ReflectionActivity: Activity
+Methods:
+- ReflectionActivity(): 
+- _RunActivity(): void
+- _GetPrompt(): string
+- _DisplayPrompt(prompt: string): void
+- _GetQuestion(): string
+Attributes:
+- _activityDuration: int
+- _averageReflectionDuration: double
+- _actualReflectionDuration: double
+
+BreathingActivity: Activity
+Methods:
+- BreathingActivity(): 
+- _RunActivity(): void
+- _RunBreatheIn(): void
+- _RunBreatheOut(): void
+Attributes:
+- _breatheOutDuration: int
+- _breatheInDuration: int
+- _activityDuration: int
+
+ListingActivity: Activity
+Methods:
+- ListingActivity(): 
+- _RunActivity(): void
+- _StartTimedActivity(): async void
+- _RunTimedActivity(): void
+- _GetUserInputs(): void
+- _GetPrompt(): string
+- _DisplayPrompt(prompt: string): void
+Attributes:
+- _userInputs: List<string>
+- _activityDuration: int
+- _activityEnded: bool
