@@ -1,0 +1,36 @@
+*
+Shape
+Rectangle
+Square
+Circle
+*
+
+Shape
+Methods:
+- GetColor(): string
+- SetColor(color: string): void
+- GetArea(): virtual double
+Attributes:
+- _color: string
+
+Square: Shape
+Methods:
+- Square(): 
+- GetArea(): override double
+Attributes:
+- _side: double
+
+Rectangle: Shape
+Methods:
+- Rectangle(): 
+- GetArea(): override double
+Attributes:
+- _length: double
+- _width: double
+
+Circle: Shape
+Methods:
+- Circle(): 
+- GetArea(): override double
+Attributes:
+- _radius: double
