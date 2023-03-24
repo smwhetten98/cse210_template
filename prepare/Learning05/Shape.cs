@@ -1,6 +1,6 @@
 using System;
 
-public class Shape 
+public abstract class Shape 
 {
 	private string _color;
 
@@ -14,8 +14,5 @@ public class Shape
         _color = color;
 	}
 
-	public virtual double GetArea()
-	{
-        throw new Exception("Not implemented in base class");
-	}
+	public abstract double GetArea();
 }
