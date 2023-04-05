@@ -1,10 +1,10 @@
 /*
 Title: CSE 210 Final Project (Coding Helper)
 Author: Seth Whetten
-Description: This program is designed to help a user write programs. When finished, this program will be able
+Description: This program is designed to help a user write program code. When finished, this program will be able
 to be paired with a number of input/output mediums, such as voice input and HUD output. The program accepts
-commands to create, update, and delete classes, methods, attributes, and content blocks (if-blocks, 
-try-catch blocks, etc.), as well as the ability to export the project into separate class files.
+a number of commands to allow the user to create, update, and delete classes, methods, attributes, and content blocks
+(if-blocks, try-catch blocks, etc.), as well as the ability to export the project into class files.
 
 Note to instructor/TA: This project was a little too big for the amount of time that our class ended up having
 for the final project, so I was not able to add in all the features that I would have liked (such as saving and

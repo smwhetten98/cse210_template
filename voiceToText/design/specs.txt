@@ -1,0 +1,294 @@
+*
+Title: Program Builder
+
+Requirements:
+- Add/Remove/Modify class name and attributes
+- Add/Remove/Modify class methods and method contents
+- Save Data to file/Load data from file (json preferred, txt or csv acceptable)
+- Export data (create directory and filetree, create class
+  files and populate with class data)
+
+Classes:
+- Program
+- InputSource(base)
+- ConsoleInput: InputSource
+- SpeechRecognizer: InputSource
+- SpeechOptions
+- DictionaryBuilder
+- Repository
+- Project - stores all classes, and their methods and attributes
+- ClassObject
+- MethodObject
+- MethodContentObject
+- MethodBlock: MethodContentObject
+- MethodLine: MethodContentObject
+- AttributeObject
+- Util
+
+- Command(base) - Various commands related to user inputs
+- ModifyObjectCommand: Command
+- CreateClassCommand: ModifyObjectCommand
+- CreateMethodCommand: ModifyObjectCommand
+- CreateMethodContentCommand: ModifyObjectCommand
+- CreateAttributeCommand: ModifyObjectCommand
+- EditClassCommand: ModifyObjectCommand
+- EditMethodCommand: ModifyObjectCommand
+- EditMethodContentCommand: ModifyObjectCommand
+- EditAttributeCommand: ModifyObjectCommand
+- DeleteClassCommand: ModifyObjectCommand
+- DeleteMethodCommand: ModifyObjectCommand
+- DeleteMethodContentCommand: ModifyObjectCommand
+- DeleteAttributeCommand: ModifyObjectCommand
+- SaveProjectCommand: Command
+- LoadProjectCommand: Command
+- ExportProjectCommand: Command
+- AddToSpeechDictionaryCommand: Command
+*
+
+Program
+Methods:
+- Main(args: string[]): static void
+- ProcessInput(input: string): static void
+- GetRepository(): static Repository
+- _BuildCOmmands(): static void
+Attributes:
+- _commands: static List<Command>
+- _repo: static Repository
+- _recognizer: InputSource
+- _currentContainer: object
+
+InputSource
+Methods:
+- Start(): abstract void
+- EndProgram(): void
+- GetIsProgramEnded(): bool
+Attributes:
+- _isProgramEnded: bool
+
+ConsoleInput
+Methods:
+- Start(): override void
+- DisplayHelpReminder(): void
+Attributes:
+- _helpReminder: string
+
+SpeechRecognizer
+Methods:
+- SpeechRecognizer(): 
+- Start(): override void
+- _SpeechRecognized(sender: object, e: SpeechRecognizedEventArgs): void
+Attributes:
+- _g: Grammar
+- _recognizer: SpeechRecognitionEngine
+
+*
+Speech Options and Dictionary Builder still in design
+*
+
+Repository
+Methods:
+- LoadFile(filepath: string): List<string>
+- SaveFile(filepath: string, fileContents: string): bool
+- CreateNewFile(filepath: string): void
+- DeleteFile(filepath: string): void
+Attributes:
+
+Project
+Methods:
+- AddClass(className: string): void
+- RemoveClass(className: string): void
+- GetClass(className: string): ClassObject
+- GetAllClasses(): List<ClassObject>
+Attributes:
+- _classList: List<ClassObject>
+
+ClassObject
+Methods:
+- ClassObject(className: string): 
+- _CreateIsAbstract(): void
+- GetClassName(): string
+- GetIsAbstract(): string
+- UpdateClassName(newClassName: string): void
+- UpdateIsAbstract(newIsAbstract: bool): void
+- AddMethod(): void
+- AddAttribute(): void
+- RemoveMethod(methodName): void
+- RemoveAttribute(methodName): void
+- GetMethod(methodName: string): MethodObject
+- GetAttribute(attributeName: string): AttributeObject
+- GetAllMethods(): List<MethodObject>
+- GetAllAttributes(): List<AttributeObject>
+Attributes:
+- _className: string
+- _isAbstract: bool
+- _methodsList: List<MethodObject>
+- _attributesList: List<AttributeObject>
+
+MethodObject
+Methods:
+- MethodObject(methodName: string): 
+- _CreateAccessModifier(): void
+- _CreateReturnType(): void
+- _CreateArgs(): void
+- GetMethodName(): string
+- GetAccessModifier(): string
+- GetReturnType(): string
+- GetParams(): List<List<string>>
+- GetParam(argName: string): string
+- UpdateMethodName(newMethodName: string): void
+- UpdateAccessModifier(newAccessModifier: string): void
+- UpdateReturnType(newReturnType: string): void
+- UpdateParams(newParam: List<List<string>>): void
+- UpdateParam(newParam: string): void
+- AddMethodContentObject(summary: string): void
+- _AddMethodBlock(sumamry: string, blockType: string): void
+- _AddMethodLine(summary: string): void
+- RemoveMethodContentObject(contentObjectName: string): void
+- GetMethodContentObject(contentObjectName: string): MethodContentObject
+- GetAllMethodContentObjects(): List<MethodContentObject>
+Attributes:
+- _methodName: string
+- _accessModifier: string
+- _returnType: string
+- _params: List<List<string>>
+- _methodContentList: List<MethodBlock>
+
+MethodContentObject
+Methods:
+- MethodContentObject(summary: string): 
+- GetSummary(): string
+- UpdateSummary(newSummary: string): void
+Attributes:
+- _summary: string
+
+MethodBlock: MethodContentObject
+Methods:
+- MethodBlock(summary: string): 
+- _CreateType(): void
+- GetType(): string
+- UpdateType(newType: string, newSummary: string): void
+- AddBlockContent(): void
+- RemoveBlockContent(contentSummary: string): void
+- GetBlockContent(contentSummary: string): MethodContentObject
+- GetAllBlockContents(): List<MethodContentObject>
+Attributes:
+- _type: string
+- _blockContentList: List<MethodContentObject>
+
+MethodLine: MethodContentObject
+Methods:
+- MethodLine(summary: string): 
+- _CreateLineContent(): void
+- GetLineContent(): string
+- UpdateLineContent(newLineContent: string): void
+Attributes:
+- _lineContent: string
+
+AttributeObject
+Methods:
+- AttributeObject(attributeName: string): 
+- _CreateAccessModifier(): void
+- _CreateType(): void
+- _CreateInitializedWith(): void
+- GetAttributeName(): string
+- GetAccessModifier(): string
+- GetType(): string
+- GetInitializedWith(): string
+- UpdateAttributeName(newAttributeName: string): void
+- UpdateAccessModifier(newAccessModifier: string): void
+- UpdateType(newType: string): void
+- UpdateInitializedWith(newInitializedWith: string): void
+Attributes:
+- _attributeName: string
+- _accessModifier: string
+- _type: string
+- _initializedWith: string
+
+Util
+Methods:
+- PromptUser(prompt: string): static string
+
+abstract Command
+Methods:
+- Execute(): abstract void
+
+ModifyObjectCommand: Command
+Methods:
+- GetName(): string
+
+CreateClassCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+CreateMethodCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+CreateMethodContentCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+CreateAttributeCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+UpdateClassCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+UpdateMethodCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+UpdateMethodContentCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+UpdateAttributeCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+DeleteClassCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+DeleteMethodCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+DeleteMethodContentCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+DeleteAttributeCommand: ModifyObjectCommand
+Methods:
+- Execute(): override void
+
+SaveProjectCommand: Command
+Methods:
+- Execute(): override void
+- _GetClassData(className: string): string
+- _GetMethodData(methodName: string): string
+- _GetMethodContentData(contentSummary: string): string
+- _GetAttributeData(attributeName: string): string
+- _SaveProjectData(): void
+
+LoadProjectCommand: Command
+- Execute(): override void
+- _LoadProjectData(): List<string>
+- _LoadClassData(classData: string): void
+- _LoadMethodData(methodData: string): void
+- _LoadMethodObjectData(methodObjectData: string): void
+- _LoadAttributeData(attributeData: string): void
+
+ExportProjectCommand: Command
+- Execute(): override void
+- _WriteClass(classObject: ClassObject): string
+- _WriteMethod(methodObject: MethodObject): string
+- _WriteMethodContent(methodContentObject: MethodContentObject): string
+- _WriteAttribute(attributeObject: AttributeObject): string
+- _WriteFiles(filesData: Dictionary<string, string>): void
+
+AddToSpeechDictionaryCommand: Command
+- Execute(): override void
+- _GetStringToAdd(): string

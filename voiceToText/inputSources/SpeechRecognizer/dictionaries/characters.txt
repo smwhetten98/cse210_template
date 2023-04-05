@@ -1,0 +1,77 @@
+tilde,~
+exclamation point,!
+exclamation mark,!
+at symbol,@
+at sign,@
+hashtag,#
+pound,#
+pound sign,#
+pound symbol,#
+dollar sign,$
+percent,%
+carat,^
+carat sign,^
+carat symbol,^
+ampersand,&
+star,*
+open parenthesis,(
+close parenthesis,)
+underscore,_
+plus,+
+backtick,`
+1,1
+2,2
+3,3
+4,4
+5,5
+6,6
+7,7
+8,8
+9,9
+0,0
+dash,-
+equals,=
+q,q
+w,w
+r,r
+t,t
+y,y
+u,u
+i,i
+o,o
+p,p
+a,a
+s,s
+d,d
+f,f
+g,g
+h,h
+j,j
+k,k
+l,l
+z,z
+x,x
+c,c
+v,v
+b,b
+n,n
+m,m
+open curly brace,{
+close curly brace,}
+open bracket,[
+close bracket,]
+colon,:
+semicolon,;
+double quotes,"
+single quotes,'
+greater than,<
+less than,>
+comma,'<'
+period,.
+dot,.
+question mark,?
+forward slash,/
+backslash,\
+pipe character,|
+pipe,|
+new line,\n

@@ -1,0 +1,26 @@
+new class
+create new class
+create class
+delete class
+add new method
+create new method
+add class parent
+make class abstract
+create new override method
+create new virtual method
+create new abstract method
+delete method
+private
+public
+protected
+abstract
+override
+virtual
+void
+string
+int
+double
+float
+bool
+null
+var
